@@ -8,6 +8,6 @@ class Alias < ActiveRecord::Base
   validates :user, presence: true
   validates :source, presence: true, email_domain_inclusion: { in: proc { |rec|
     rec.company.domains.map(&:name)
-  } }, uniqueness: { case_sensitive: false }
+  } }, uniqueness: { case_sensitive: false }, email: true
 
 end

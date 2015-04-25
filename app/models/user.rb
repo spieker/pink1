@@ -7,7 +7,7 @@ class User < ActiveRecord::Base
   # validations
   validates :email, presence: true, email_domain_inclusion: { in: proc { |user|
     user.company.domains.map(&:name)
-  } }, uniqueness: { case_sensitive: false }
+  } }, uniqueness: { case_sensitive: false }, email: true
   validates :password, presence: true
   validates :company, presence: true
 

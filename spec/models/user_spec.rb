@@ -26,6 +26,11 @@ RSpec.describe User, type: :model do
       user.email = 'user@some.example.com'
       expect(user).not_to be_valid
     end
+
+    it 'is invalid with an invalid email address' do
+      user.email = 'user.example.com'
+      expect(user).not_to be_valid
+    end
   end
 
   context 'password' do

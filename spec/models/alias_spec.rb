@@ -24,5 +24,10 @@ RSpec.describe Alias, type: :model do
       _alias.source = 'user@some.example.com'
       expect(_alias).not_to be_valid
     end
+
+    it 'is invalid with an invalid email address' do
+      _alias.source = 'user.example.com'
+      expect(_alias).not_to be_valid
+    end
   end
 end
