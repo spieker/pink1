@@ -12,7 +12,10 @@ set :deploy_to, '/root/api/'
 set :linked_files, %w{config/database.yml config/secrets.yml}
 
 # Default value for linked_dirs is []
-set :linked_dirs, %w{bin log tmp/pids tmp/cache tmp/sockets vendor/bundle public/system}
+set :linked_dirs, %w{log tmp/pids tmp/cache tmp/sockets vendor/bundle public/system}
+
+# Fix: http://stackoverflow.com/questions/26151443/capistrano-3-deployment-for-rails-4-binstubs-conflict
+set :bundle_binstubs, nil
 
 # Default value for default_env is {}
 # set :default_env, { path: "/opt/ruby/bin:$PATH" }
