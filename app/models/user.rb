@@ -21,4 +21,11 @@ class User < ActiveRecord::Base
     UnixCrypt.valid?(value, password)
   end
 
+  def self.authenticate!(email, password)
+    user = User.where(email: email).first
+    return nil unless user.present?
+    return nil unless user.validate_password password
+    user
+  end
+
 end

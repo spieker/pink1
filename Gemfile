@@ -13,6 +13,8 @@ gem 'cloudinary',                   '~> 1.1.0'
 # API
 gem 'versionist',                   '~> 1.4.1'
 gem 'rack-cors',                    '~> 0.4.0', require: 'rack/cors'
+gem 'doorkeeper',                   '~> 2.2.0'
+gem 'warden',                       '~> 1.2.3'
 
 # Authorization
 gem 'pundit',                       '~> 1.0.0'
