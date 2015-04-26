@@ -44,6 +44,8 @@ class V1::UsersController < V1::BaseController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
-      params.require(:user).permit policy(@user || User).permitted_attributes
+      r = params.require(:user).permit policy(@user || User).permitted_attributes
+      r.delete(:password) if r[:password].blank?
+      r
     end
 end
