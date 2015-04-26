@@ -1,3 +1,13 @@
+# Pink1
+
+This is an API managing e-mail accounts and aliases for use with Postfix
+and Dovecot. Currently it is just build for managing my private mail
+server accounts. As frontend I use an EmberJS application build for this
+API (see: https://github.com/spieker/pink1-frontend).
+
+Since it was build over night, it is tested only very poorly, so if you
+want to use this in production, there is still a lot of work to do.
+
 ### Mail server configuration
 
 https://www.digitalocean.com/community/tutorials/how-to-configure-a-mail-server-using-postfix-dovecot-mysql-and-spamassasin
