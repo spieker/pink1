@@ -1,5 +1,8 @@
 class User < ActiveRecord::Base
 
+  # hooks
+  before_validation :set_uuid, on: :create
+
   # relations
   belongs_to :company
   has_many :aliases
@@ -26,6 +29,11 @@ class User < ActiveRecord::Base
     return nil unless user.present?
     return nil unless user.validate_password password
     user
+  end
+
+  private
+  def set_uuid
+    self.uuid = SecureRandom.uuid
   end
 
 end
