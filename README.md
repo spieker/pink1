@@ -1,6 +1,11 @@
-INSERT INTO `servermail`.`virtual_domains` (`id` ,`name`) VALUES ('1', 'ich.ovh');
-INSERT INTO `servermail`.`virtual_users` (`id`, `domain_id`, `password` , `email`) VALUES ('1', '1', ENCRYPT('password', CONCAT('$6$', SUBSTRING(SHA(RAND()), -16))), 'paul@ich.ovh');
-INSERT INTO `servermail`.`virtual_aliases` (`id`, `domain_id`, `source`, `destination`) VALUES ('1', '1', 'spieker@ich.ovh', 'paul@ich.ovh');
-INSERT INTO `servermail`.`virtual_domains` (`id` ,`name`) VALUES ('2', 'pink1.de');
-INSERT INTO `servermail`.`virtual_users` (`id`, `domain_id`, `password` , `email`) VALUES ('2', '2', ENCRYPT('password', CONCAT('$6$', SUBSTRING(SHA(RAND()), -16))), 'stephie@pink1.de');
+### Mail server configuration
 
+https://www.digitalocean.com/community/tutorials/how-to-configure-a-mail-server-using-postfix-dovecot-mysql-and-spamassasin
+
+To use uuid as mail home set `driver` of `userdb` to `sql` and `args` to
+`/etc/dovecot/dovecot-sql.conf.ext` in `/etc/dovecot/conf.d/auth-sql.conf.ext`.
+Then set `user_query` in `/etc/dovecot/dovecot-sql.conf.ext` to
+
+```
+user_query = SELECT CONCAT('maildir:/var/mail/', uuid) AS mail, CONCAT('/var/mail/', uuid) AS home, 5000 AS uid, 5000 AS gid FROM users WHERE email='%u';
+```
